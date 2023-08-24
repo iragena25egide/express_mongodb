@@ -14,6 +14,7 @@ app.use(express.json());
 app.use(bodyparser.json());
 app.use('/',userRoute);
 app.use(cors());
+app.use(express.static("public"));
 
 
 

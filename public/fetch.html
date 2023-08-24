@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Data from Node.js and Mongodb API</title>
+</head>
+<body>
+    <h1>DATA from Mongodb</h1>
+    <ul id="dataList">
+        <!-- Data will be displayed here -->
+    </ul>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch("http://localhost:8000/get") // Replace with your API endpoint
+            .then(response => response.json())
+            .then(data => {
+                const dataList = document.getElementById("dataList");
+                data.forEach(item => {
+                    const li = document.createElement("li");
+                    li.textContent = item.name; // Assuming the data has a 'name' property
+                    dataList.appendChild(li);
+                });
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+            });
+    });
+</script>
+
+</body>
+</html>
